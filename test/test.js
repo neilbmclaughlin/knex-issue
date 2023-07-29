@@ -1,10 +1,19 @@
 const Lab = require('@hapi/lab')
 const { describe, it, beforeEach, afterEach } = exports.lab = Lab.script()
 const { expect } = require('@hapi/code')
-const doStuff = require('../do-stuff')
+const proxyquire = require('proxyquire')
 
 describe('Test', () => {
-  afterEach(() => {
+  let doStuff
+  beforeEach(() => {
+    const knex = require('knex')({
+      client: 'pg',
+      debug: true,
+      connection: process.env.LFW_DATA_DB_CONNECTION
+    })
+    doStuff = proxyquire('../do-stuff.js', {
+      './knex.js': knex
+    });
   })
   it('Test 1', async () => {
     const result = await doStuff()
