@@ -1,6 +1,11 @@
 const VError = require('verror')
+const knex = require('knex')({
+  client: 'pg',
+  debug: true,
+  connection: process.env.LFW_DATA_DB_CONNECTION
+})
 
-async function query (knex) {
+async function query () {
   try {
     return await knex(process.env.TEST_TABLE).select('*').limit(5).returning('*')
   } catch (error) {
@@ -9,7 +14,7 @@ async function query (knex) {
   }
 }
 
-async function end (knex) {
+async function end () {
   try {
     await knex.destroy()
   } catch (error) {
@@ -18,15 +23,15 @@ async function end (knex) {
   }
 }
 
-async function doStuff (knex) {
+async function doStuff () {
   try {
-    const result = await query(knex)
+    const result = await query()
     return result
   } catch (error) {
     console.log({ error })
     throw error
   } finally {
-    await end(knex)
+    await end()
   }
 }
 
