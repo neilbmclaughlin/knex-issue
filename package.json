@@ -1,0 +1,21 @@
+{
+  "name": "knex-issue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "do-do-stuff.js",
+  "scripts": {
+    "start": "node do-do-stuff.js",
+    "test": "lab"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^2.5.1",
+    "pg": "^8.11.1",
+    "verror": "^1.10.1"
+  },
+  "devDependencies": {
+    "@hapi/code": "^9.0.3",
+    "@hapi/lab": "^25.1.3"
+  }
+}
