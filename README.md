@@ -24,11 +24,11 @@ TEST_TABLE=ffoi_station npm test`
 There are two resolutions identified here:
 
 1) Using a change to the subject code to pass knex into the methods and is in
-the branch `fix/using-dependancy-injection`
+the branch `fixs/using-dependancy-injection`
 
 1) Using a change to the test code to use proxyquire in beforeEach to ensure
 each test gets a fresh instance of knex and is in the branch
-`fix/using-proxyquire`
+`fixs/using-proxyquire`
 The second resolution is preferable as it doesn't involve a change to the
 subject code but still feels a bit hacky.
 
